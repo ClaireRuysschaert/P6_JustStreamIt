@@ -17,8 +17,10 @@ function displayBestMovie(movie, containerId) {
   const container = document.getElementById(containerId);
   title = document.createElement("h1");
   title.innerHTML = movie.title;
+
   container.appendChild(title);
   const img = document.createElement("img");
+  
   img.src = movie.image_url;
   container.appendChild(img);
   const playButton = document.createElement("button");
@@ -90,10 +92,7 @@ function displayBestMovie(movie, containerId) {
 }
 
 function handleModal(modalId, triggerId, closeClass) {
-  // Get the modal
   var modal = document.getElementById(modalId);
-
-  // Get the button that opens the modal
   var trigger = document.getElementById(triggerId);
 
   // Get the <span> element that closes the modal
