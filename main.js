@@ -42,15 +42,17 @@ function displayBestMovie(movie, containerId) {
       modalContent.appendChild(titleElement);
 
       var genreElement = document.createElement("p");
-      genreElement.innerHTML = "Genre: " + data.genres;
+      genreElement.innerHTML = "Genre(s): " + data.genres;
       modalContent.appendChild(genreElement);
 
       var dateElement = document.createElement("p");
-      dateElement.innerHTML = "Date de sortie: " + data.date_published;
+      var date = new Date(data.date_published);
+      var formattedDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+      dateElement.innerHTML = "Published date: " + formattedDate;
       modalContent.appendChild(dateElement);
 
       var ratedElement = document.createElement("p");
-      ratedElement.innerHTML = "Rated: " + data.rated;
+      ratedElement.innerHTML = "Rated: " + (data.rated && data.rated !== "Not rated or unkown rating" ? data.rated : "_");
       modalContent.appendChild(ratedElement);
 
       var scoreElement = document.createElement("p");
@@ -58,27 +60,27 @@ function displayBestMovie(movie, containerId) {
       modalContent.appendChild(scoreElement);
 
       var directorsElement = document.createElement("p");
-      directorsElement.innerHTML = "Réalisateur: " + data.directors;
+      directorsElement.innerHTML = "Director(s): " + data.directors;
       modalContent.appendChild(directorsElement);
 
       var actorsElement = document.createElement("p");
-      actorsElement.innerHTML = "Acteurs: " + data.actors;
+      actorsElement.innerHTML = "Actor(s): " + data.actors.join(", ");
       modalContent.appendChild(actorsElement);
 
       var durationElement = document.createElement("p");
-      durationElement.innerHTML = "Durée: " + data.duration + " minutes";
+      durationElement.innerHTML = "Duration: " + data.duration + " min";
       modalContent.appendChild(durationElement);
 
       var countriesElement = document.createElement("p");
-      countriesElement.innerHTML = "Pays: " + data.countries;
+      countriesElement.innerHTML = "Country: " + data.countries;
       modalContent.appendChild(countriesElement);
 
       var boxOfficeElement = document.createElement("p");
-      boxOfficeElement.innerHTML = "Box Office: " + data.worldwide_gross_income;
+      boxOfficeElement.innerHTML = "Box Office: " + (data.worldwide_gross_income ? data.worldwide_gross_income : "_");
       modalContent.appendChild(boxOfficeElement);
 
       var resumeElement = document.createElement("p");
-      resumeElement.innerHTML = "Résumé: " + data.long_description;
+      resumeElement.innerHTML = "Summary: " + data.long_description;
       modalContent.appendChild(resumeElement);
     });
 
