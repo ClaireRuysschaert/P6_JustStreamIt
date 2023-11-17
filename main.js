@@ -15,12 +15,12 @@ function fetchAndDisplayMovies(url, containerId, isBestMovie = false) {
 
 function displayBestMovie(movie, containerId) {
   const container = document.getElementById(containerId);
-  title = document.createElement("h1");
+  title = document.createElement("h2");
   title.innerHTML = movie.title;
 
   container.appendChild(title);
   const img = document.createElement("img");
-  
+
   img.src = movie.image_url;
   container.appendChild(img);
   const playButton = document.createElement("button");
@@ -34,7 +34,7 @@ function displayBestMovie(movie, containerId) {
       container.appendChild(description);
 
       var modalContent = document.querySelector("#myModal .modal-content p");
-      
+
       var imgElement = document.createElement("img");
       imgElement.src = movie.image_url;
       modalContent.appendChild(imgElement);
@@ -49,12 +49,17 @@ function displayBestMovie(movie, containerId) {
 
       var dateElement = document.createElement("p");
       var date = new Date(data.date_published);
-      var formattedDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+      var formattedDate =
+        date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
       dateElement.innerHTML = "Published date: " + formattedDate;
       modalContent.appendChild(dateElement);
 
       var ratedElement = document.createElement("p");
-      ratedElement.innerHTML = "Rated: " + (data.rated && data.rated !== "Not rated or unkown rating" ? data.rated : "_");
+      ratedElement.innerHTML =
+        "Rated: " +
+        (data.rated && data.rated !== "Not rated or unkown rating"
+          ? data.rated
+          : "_");
       modalContent.appendChild(ratedElement);
 
       var scoreElement = document.createElement("p");
@@ -78,7 +83,9 @@ function displayBestMovie(movie, containerId) {
       modalContent.appendChild(countriesElement);
 
       var boxOfficeElement = document.createElement("p");
-      boxOfficeElement.innerHTML = "Box Office: " + (data.worldwide_gross_income ? data.worldwide_gross_income : "_");
+      boxOfficeElement.innerHTML =
+        "Box Office: " +
+        (data.worldwide_gross_income ? data.worldwide_gross_income : "_");
       modalContent.appendChild(boxOfficeElement);
 
       var resumeElement = document.createElement("p");
@@ -86,8 +93,6 @@ function displayBestMovie(movie, containerId) {
       modalContent.appendChild(resumeElement);
     });
 
-
-    
   handleModal("myModal", "moreInfosButton", "close");
 }
 
@@ -98,28 +103,29 @@ function handleModal(modalId, triggerId, closeClass) {
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName(closeClass)[0];
 
-  // When the user clicks the button, open the modal 
-  trigger.onclick = function() {
+  // When the user clicks the button, open the modal
+  trigger.onclick = function () {
     modal.style.display = "block";
-  }
+  };
 
   // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
+  span.onclick = function () {
     modal.style.display = "none";
-  }
+  };
 
   // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
+  window.onclick = function (event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
-  }
+  };
 }
 
 function displayMovies(movies, containerId) {
   const container = document.getElementById(containerId);
   // If the containerId is 'BestRatedMovies', start from the second movie
-  const moviesToDisplay = containerId === "BestRatedMovies" ? movies.slice(1) : movies;
+  const moviesToDisplay =
+    containerId === "BestRatedMovies" ? movies.slice(1) : movies;
   moviesToDisplay.forEach((movie) => {
     const movieContainer = document.createElement("div");
     movieContainer.classList.add("movie");
@@ -138,11 +144,29 @@ function displayMovies(movies, containerId) {
 fetchAndDisplayMovies(api_url + sort_by_imdb_score, "BestMovie", true);
 
 // Best Rated Movies
-fetchAndDisplayMovies(api_url + sort_by_imdb_score + "&page_size=8", "BestRatedMovies");
+fetchAndDisplayMovies(
+  api_url + sort_by_imdb_score + "&page_size=8",
+  "BestRatedMovies"
+);
 
 // Best Movies By Genre
 const moviesGenres = ["Biography", "Comedy", "Sci-Fi"];
 moviesGenres.forEach((genre) => {
-  fetchAndDisplayMovies(api_url + sort_by_imdb_score + `&genre=${genre}&page_size=7`, `${genre}Movies`);
+  fetchAndDisplayMovies(
+    api_url + sort_by_imdb_score + `&genre=${genre}&page_size=7`,
+    `${genre}Movies`
+  );
 });
 
+// Carousel 
+const scrollAmount = 1000;
+document.querySelector(".arrow.right").addEventListener("click", () => {
+  document
+    .querySelector(".movies")
+    .scrollBy({ left: scrollAmount, behavior: "smooth" });
+});
+document.querySelector(".arrow.left").addEventListener("click", () => {
+  document
+    .querySelector(".movies")
+    .scrollBy({ left: -scrollAmount, behavior: "smooth" });
+});

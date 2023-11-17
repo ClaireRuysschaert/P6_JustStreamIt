@@ -10,33 +10,61 @@
       <img src="images/logo.png" alt="logo" />
       <nav>
         <ul>
-          <li><a href="#"><img src="images/home.svg" alt="home" /> Home Page</a></li>
-          <li><a href="#BiographyMovies"><img src="images/list.svg" alt="list" /> Categories</a></li>
+          <li>
+            <a href="#"><img src="images/home.svg" alt="home" /> Home Page</a>
+          </li>
+          <li>
+            <a href="#BiographyMovies"
+              ><img src="images/list.svg" alt="list" /> Categories</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
-
-    <div id="BestMovie">
-        <!-- Trigger/Open The Modal -->
-        <button id="moreInfosButton">More infos</button>
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-          <!-- Modal content -->
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>More informations about the movie</p>
+    <main>
+      <div id="best-movie-container">
+        <h1>Best noted movie</h1>
+        <div id="BestMovie">
+          <!-- Trigger/Open The Modal -->
+          <button id="moreInfosButton">More infos</button>
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>More informations about the movie</p>
+            </div>
           </div>
-
+        </div>
       </div>
-    </div>
-    <h1>Best rated movies</h1>
-    <div id="BestRatedMovies"></div>
-    <h1>Biography</h1>
-    <div id="BiographyMovies"></div>
-    <h1>Comedy</h1>
-    <div id="ComedyMovies"></div>
-    <h1>Sci-Fi</h1>
-    <div id="Sci-FiMovies"></div>
-    <script src="main.js"></script>
+      <h1>Best rated movies</h1>
+      <div class="movie-container">
+        <p><i class="arrow left"></i></p>
+        <div class="movies">
+          <div id="BestRatedMovies"></div>
+        </div>
+        <p><i class="arrow right"></i></p>
+      </div>
+
+      <h1>Biography</h1>
+      <div class="movie-container">
+        <p><i class="arrow left"></i></p>
+        <div id="BiographyMovies"></div>
+        <p><i class="arrow right"></i></p>
+      </div>
+      <h1>Comedy</h1>
+      <div class="movie-container">
+        <p><i class="arrow left"></i></p>
+        <div id="ComedyMovies"></div>
+        <p><i class="arrow right"></i></p>
+      </div>
+      <h1>Sci-Fi</h1>
+      <div class="movie-container">
+        <p><i class="arrow left"></i></p>
+        <div id="Sci-FiMovies"></div>
+        <p><i class="arrow right"></i></p>
+      </div>
+      <script src="main.js"></script>
+    </main>
   </body>
 </html>
