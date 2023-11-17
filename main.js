@@ -158,15 +158,15 @@ moviesGenres.forEach((genre) => {
   );
 });
 
-// Carousel 
 const scrollAmount = 1000;
-document.querySelector(".arrow.right").addEventListener("click", () => {
-  document
-    .querySelector(".movies")
-    .scrollBy({ left: scrollAmount, behavior: "smooth" });
+document.querySelectorAll(".arrow.right").forEach((arrow) => {
+  arrow.addEventListener("click", () => {
+    arrow.parentNode.parentNode.querySelector(".movies").scrollBy({ left: scrollAmount, behavior: "smooth" });
+  });
 });
-document.querySelector(".arrow.left").addEventListener("click", () => {
-  document
-    .querySelector(".movies")
-    .scrollBy({ left: -scrollAmount, behavior: "smooth" });
+
+document.querySelectorAll(".arrow.left").forEach((arrow) => {
+  arrow.addEventListener("click", () => {
+    arrow.parentNode.parentNode.querySelector(".movies").scrollBy({ left: -scrollAmount, behavior: "smooth" });
+  });
 });
