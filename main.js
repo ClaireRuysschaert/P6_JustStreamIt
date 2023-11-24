@@ -35,61 +35,61 @@ function displayBestMovie(movie, containerId) {
 
       var modalContent = document.querySelector("#myModal .modal-content p");
 
+      var titleElement = document.createElement("h2");
+      titleElement.innerHTML = movie.title;
+      modalContent.appendChild(titleElement);
+
       var imgElement = document.createElement("img");
       imgElement.src = movie.image_url;
       modalContent.appendChild(imgElement);
 
-      var titleElement = document.createElement("h1");
-      titleElement.innerHTML = movie.title;
-      modalContent.appendChild(titleElement);
-
       var genreElement = document.createElement("p");
-      genreElement.innerHTML = "Genre(s): " + data.genres;
+      genreElement.innerHTML = "<span>Genre(s):</span> " + data.genres;
       modalContent.appendChild(genreElement);
 
       var dateElement = document.createElement("p");
       var date = new Date(data.date_published);
       var formattedDate =
         date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-      dateElement.innerHTML = "Published date: " + formattedDate;
+      dateElement.innerHTML = "<span>Published date:</span> " + formattedDate;
       modalContent.appendChild(dateElement);
 
       var ratedElement = document.createElement("p");
       ratedElement.innerHTML =
-        "Rated: " +
+        "<span>Rated:</span> " +
         (data.rated && data.rated !== "Not rated or unkown rating"
           ? data.rated
-          : "_");
+          : "-");
       modalContent.appendChild(ratedElement);
 
       var scoreElement = document.createElement("p");
-      scoreElement.innerHTML = "IMBD Score: " + data.imdb_score;
+      scoreElement.innerHTML = "<span>IMBD Score:</span> " + data.imdb_score;
       modalContent.appendChild(scoreElement);
 
       var directorsElement = document.createElement("p");
-      directorsElement.innerHTML = "Director(s): " + data.directors;
+      directorsElement.innerHTML = "<span>Director(s):</span> " + data.directors;
       modalContent.appendChild(directorsElement);
 
       var actorsElement = document.createElement("p");
-      actorsElement.innerHTML = "Actor(s): " + data.actors.join(", ");
+      actorsElement.innerHTML = "<span>Actor(s):</span> " + data.actors.join(", ");
       modalContent.appendChild(actorsElement);
 
       var durationElement = document.createElement("p");
-      durationElement.innerHTML = "Duration: " + data.duration + " min";
+      durationElement.innerHTML = "<span>Duration:</span> " + data.duration + " min";
       modalContent.appendChild(durationElement);
 
       var countriesElement = document.createElement("p");
-      countriesElement.innerHTML = "Country: " + data.countries;
+      countriesElement.innerHTML = "<span>Country:</span> " + data.countries;
       modalContent.appendChild(countriesElement);
 
       var boxOfficeElement = document.createElement("p");
       boxOfficeElement.innerHTML =
-        "Box Office: " +
-        (data.worldwide_gross_income ? data.worldwide_gross_income : "_");
+        "<span>Box Office:</span> " +
+        (data.worldwide_gross_income ? data.worldwide_gross_income : "-");
       modalContent.appendChild(boxOfficeElement);
 
       var resumeElement = document.createElement("p");
-      resumeElement.innerHTML = "Summary: " + data.long_description;
+      resumeElement.innerHTML = "<span>Summary:</span> " + data.long_description;
       modalContent.appendChild(resumeElement);
     });
 
