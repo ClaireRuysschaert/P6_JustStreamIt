@@ -1,19 +1,7 @@
 const api_url = "http://localhost:8000/api/v1/titles/";
 const sort_by_imdb_score = "?sort_by=+-imdb_score";
 
-function fetchAndDisplayMovies(url, containerId, isBestMovie = false) {
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      if (isBestMovie) {
-        displayBestMovie(data.results[0], containerId);
-      } else {
-        displayMovies(data.results, containerId);
-      }
-    });
-}
-
-function displayBestMovie(movie, containerId) {
+function displayBasicBestMovieInfos(movie, containerId) {
   const container = document.getElementById(containerId);
   title = document.createElement("h2");
   title.innerHTML = movie.title;
@@ -26,6 +14,10 @@ function displayBestMovie(movie, containerId) {
   const playButton = document.createElement("button");
   playButton.innerHTML = "Play";
   container.appendChild(playButton);
+}
+
+function displayDetailedMovieInfos(movie, containerId) {
+  const container = document.getElementById(containerId);
   fetch(api_url + movie.id)
     .then((response) => response.json())
     .then((data) => {
@@ -92,33 +84,32 @@ function displayBestMovie(movie, containerId) {
       resumeElement.innerHTML = "<span>Summary:</span> " + data.long_description;
       modalContent.appendChild(resumeElement);
     });
-
-  handleModal("myModal", "moreInfosButton", "close");
 }
 
 function handleModal(modalId, triggerId, closeClass) {
   var modal = document.getElementById(modalId);
   var trigger = document.getElementById(triggerId);
-
-  // Get the <span> element that closes the modal
   var span = document.getElementsByClassName(closeClass)[0];
 
-  // When the user clicks the button, open the modal
   trigger.onclick = function () {
     modal.style.display = "block";
   };
 
-  // When the user clicks on <span> (x), close the modal
   span.onclick = function () {
     modal.style.display = "none";
   };
 
-  // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
   };
+}
+
+function displayBestMovie(movie, containerId) {
+  displayBasicBestMovieInfos(movie, containerId);
+  displayDetailedMovieInfos(movie, containerId);
+  handleModal("myModal", "moreInfosButton", "close");
 }
 
 function displayMovies(movies, containerId) {
@@ -138,6 +129,18 @@ function displayMovies(movies, containerId) {
     movieContainer.appendChild(img);
     container.appendChild(movieContainer);
   });
+}
+
+function fetchAndDisplayMovies(url, containerId, isBestMovie = false) {
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      if (isBestMovie) {
+        displayBestMovie(data.results[0], containerId);
+      } else {
+        displayMovies(data.results, containerId);
+      }
+    });
 }
 
 // Best Movie
