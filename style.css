@@ -1,17 +1,34 @@
+@font-face {
+  font-family: 'Frontleroy Brown NF Regular';
+  src: url('fonts/fontleroybrown.regular.ttf');
+}
+
+@font-face {
+  font-family: 'roboto regular';
+  src: url('fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'roboto thin';
+  src: url('fonts/Roboto-Thin.ttf');
+}
+
 :root {
   --dark-color: #344A53;
   --medium-color: #7EB3C7;
   --light-color: #C1D7E0;
+  font-family: 'roboto bold';
 }
 
 main {
   max-width: 1050px;
   margin: 0 auto;
   padding: 0 20px;
-
 }
-
 main h1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   font-size: 28px;
   color: var(--dark-color);
   font-weight: 600;
@@ -25,6 +42,7 @@ main h1 {
   border-bottom: 8px solid var(--medium-color);
   border-right: 8px solid var(--medium-color);
   text-align: center;
+  font-family: 'roboto thin';
 }
 
 header {
@@ -83,7 +101,7 @@ nav ul li a img {
 }
 
 body {
-  font: 16px/1.5 sans-serif;
+  font: 16px/1.5 'roboto regular';
   background-color: var(--dark-color);
 }
 
@@ -105,6 +123,10 @@ body {
   margin-top: 100px;
 }
 
+h1 img {
+  max-height: 40px;
+}
+
 #BestMovie {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -112,7 +134,7 @@ body {
   gap: 20px;
   place-items: center;
   justify-items: center;
-  grid-gap: 20px;
+  grid-gap: 42px 0px;
 }
 
 #BestMovie h2 {
@@ -120,6 +142,9 @@ body {
   grid-column-end: 1;
   grid-row-start: 1;
   grid-row-end: 1;
+  font-family: 'Frontleroy Brown NF Regular';
+  font-size: 51px;
+  font-weight: normal;
 }
 
 #BestMovie #playButton{
@@ -142,6 +167,11 @@ body {
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 4;
+  border-radius: 20%;
+  border-bottom: 8px solid goldenrod;
+  border-right: 8px solid goldenrod;
+  width: 232.2px;
+  height: 341.28px;
 }
 
 
@@ -234,6 +264,7 @@ body {
 
 .movie-container::-webkit-scrollbar {
   display: none;
+  border-radius: 2%;
 }
 
 .arrow {
