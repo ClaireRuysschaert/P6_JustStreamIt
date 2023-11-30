@@ -1,30 +1,11 @@
 const api_url = "http://localhost:8000/api/v1/titles/";
 const sort_by_imdb_score = "?sort_by=+-imdb_score";
 
-function displayBasicBestMovieInfos(movie, containerId) {
-  const container = document.getElementById(containerId);
-  title = document.createElement("h2");
-  title.innerHTML = movie.title;
-
-  container.appendChild(title);
-  const img = document.createElement("img");
-
-  img.src = movie.image_url;
-  container.appendChild(img);
-  const playButton = document.createElement("button");
-  playButton.innerHTML = "Play";
-  container.appendChild(playButton);
-}
-
 function displayDetailedMovieInfos(movie, containerId) {
   const container = document.getElementById(containerId);
   fetch(api_url + movie.id)
     .then((response) => response.json())
     .then((data) => {
-      const description = document.createElement("p");
-      description.innerHTML = data.description;
-      container.appendChild(description);
-
       var modalContent = document.querySelector("#myModal .modal-content p");
 
       var titleElement = document.createElement("h2");
@@ -107,7 +88,27 @@ function handleModal(modalId, triggerId, closeClass) {
 }
 
 function displayBestMovie(movie, containerId) {
-  displayBasicBestMovieInfos(movie, containerId);
+  const container = document.getElementById(containerId);
+  title = document.createElement("h2");
+  title.innerHTML = movie.title;
+  container.appendChild(title);
+  
+  // fetch detail api to display description
+  fetch(api_url + movie.id)
+  .then((response) => response.json())
+  .then((data) => {
+  const description = document.createElement("p");
+  description.innerHTML = data.description;
+  container.appendChild(description);});
+  
+  const img = document.createElement("img");
+  img.src = movie.image_url;
+  container.appendChild(img);
+  
+  const playButton = document.createElement("button");
+  playButton.innerHTML = "Play";
+  container.appendChild(playButton);
+
   displayDetailedMovieInfos(movie, containerId);
   handleModal("myModal", "moreInfosButton", "close");
 }
