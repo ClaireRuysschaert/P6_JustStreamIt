@@ -1,8 +1,7 @@
 const api_url = "http://localhost:8000/api/v1/titles/";
 const sort_by_imdb_score = "?sort_by=+-imdb_score";
 
-function displayDetailedMovieInfos(movie, containerId) {
-  const container = document.getElementById(containerId);
+function displayDetailedMovieInfosModalContent(movie, containerId) {
   fetch(api_url + movie.id)
     .then((response) => response.json())
     .then((data) => {
@@ -109,8 +108,16 @@ function displayBestMovie(movie, containerId) {
   playButton.innerHTML = "Play";
   container.appendChild(playButton);
 
-  displayDetailedMovieInfos(movie, containerId);
   handleModal("myModal", "moreInfosButton", "close");
+
+  const moreInfosButton = document.getElementById("moreInfosButton");
+  moreInfosButton.onclick = function () {
+    const modalContent = document.querySelector("#myModal .modal-content p");
+    modalContent.innerHTML = "";
+    displayDetailedMovieInfosModalContent(movie, "myModal");
+    var modal = document.getElementById("myModal");
+    modal.style.display = "block";
+  }
 }
 
 function displayMovies(movies, containerId) {
@@ -129,7 +136,7 @@ function displayMovies(movies, containerId) {
     img.onclick = function () {
       const modalContent = document.querySelector("#myModal .modal-content p");
       modalContent.innerHTML = "";
-      displayDetailedMovieInfos(movie, "myModal");
+      displayDetailedMovieInfosModalContent(movie, "myModal");
       var modal = document.getElementById("myModal");
       modal.style.display = "block";
     }

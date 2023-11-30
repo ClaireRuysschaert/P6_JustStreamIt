@@ -145,6 +145,7 @@ h2 {
   font-family: 'Frontleroy Brown NF Regular';
   font-size: 51px;
   font-weight: normal;
+  margin: inherit;
 }
 
 #BestMovie #playButton{
@@ -174,6 +175,15 @@ h2 {
   height: 341.28px;
 }
 
+.modal-content img{
+  border-radius: 20%;
+  border-bottom: 8px solid var(--dark-color);
+  border-right: 8px solid var(--dark-color);
+  width: 232.2px;
+  height: 341.28px;
+  margin-bottom: inherit;
+}
+
 #moreInfosButton{
   grid-column-start: 3;
   grid-column-end: 3;
@@ -186,7 +196,6 @@ h2 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* justify-content: space-evenly; */
   align-items: center;
 }
 
@@ -239,16 +248,12 @@ h2 {
 
 .movie-container {
   display: flex;
-  /* align-items: center; */
   flex-direction: row;
   align-items: center;
-  /* width: max-content; */
-  /* overflow-x: auto; */
   scroll-snap-type: x mandatory;
   scroll-padding: 1rem;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  /* gap: 20px; */
 }
 
 .movies {
@@ -289,7 +294,6 @@ h2 {
 }
 
 
-/* The Modal (background) */
 .modal {
     display: none; 
     position: fixed;
@@ -303,14 +307,6 @@ h2 {
     background-color: rgb(0,0,0); 
     background-color: rgba(0,0,0,0.4);
   }
-
-/* .modal .modal-content p {
-    font-family: 'roboto regular';
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--dark-color);
-    margin-bottom: 20px;
-  } */
 
 
 .modal-content {
