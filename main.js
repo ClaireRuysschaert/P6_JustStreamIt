@@ -66,14 +66,9 @@ function displayDetailedMovieInfosModalContent(movie, containerId) {
     });
 }
 
-function handleModal(modalId, triggerId, closeClass) {
+function handleModal(modalId, closeClass) {
   var modal = document.getElementById(modalId);
-  var trigger = document.getElementById(triggerId);
   var span = document.getElementsByClassName(closeClass)[0];
-
-  trigger.onclick = function () {
-    modal.style.display = "block";
-  };
 
   span.onclick = function () {
     modal.style.display = "none";
@@ -107,8 +102,6 @@ function displayBestMovie(movie, containerId) {
   const playButton = document.createElement("button");
   playButton.innerHTML = "Play";
   container.appendChild(playButton);
-
-  handleModal("myModal", "moreInfosButton", "close");
 
   const moreInfosButton = document.getElementById("moreInfosButton");
   moreInfosButton.onclick = function () {
@@ -154,6 +147,8 @@ function fetchAndDisplayMovies(url, containerId, isBestMovie = false) {
       }
     });
 }
+
+handleModal("myModal", "close");
 
 // Best Movie
 fetchAndDisplayMovies(api_url + sort_by_imdb_score, "BestMovie", true);
