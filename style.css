@@ -57,6 +57,8 @@ header {
   border-right: 8px solid var(--medium-color);
   width: auto;
   margin: 15px;
+  max-width: 1500px;
+  margin: 0 auto;
   
 }
 
