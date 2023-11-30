@@ -123,11 +123,15 @@ function displayMovies(movies, containerId) {
     const img = document.createElement("img");
     img.alt = movie.title;
     img.src = movie.image_url;
-    img.onerror = function () {
-      img.src = `https://placehold.co/182x268/black/white?font=oswald&text=${movie.title}`;
-    };
     movieContainer.appendChild(img);
     container.appendChild(movieContainer);
+    img.onclick = function () {
+      const modalContent = document.querySelector("#myModal .modal-content p");
+      modalContent.innerHTML = "";
+      displayDetailedMovieInfos(movie, "myModal");
+      var modal = document.getElementById("myModal");
+      modal.style.display = "block";
+    }
   });
 }
 

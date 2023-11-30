@@ -137,7 +137,7 @@ h1 img {
   grid-gap: 42px 0px;
 }
 
-#BestMovie h2 {
+h2 {
   grid-column-start: 1;
   grid-column-end: 1;
   grid-row-start: 1;
@@ -174,8 +174,7 @@ h1 img {
   height: 341.28px;
 }
 
-
-#BestMovie #moreInfosButton{
+#moreInfosButton{
   grid-column-start: 3;
   grid-column-end: 3;
   grid-row-start: 1;
@@ -304,7 +303,16 @@ h1 img {
     background-color: rgb(0,0,0); 
     background-color: rgba(0,0,0,0.4);
   }
-  
+
+/* .modal .modal-content p {
+    font-family: 'roboto regular';
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+  } */
+
+
 .modal-content {
     background-color: var(--light-color);
     margin: auto;
@@ -312,6 +320,7 @@ h1 img {
     border: 1px solid #888;
     width: 70%;
     border-radius: 25px;
+    text-align: center;
   }
   
 #myModal {
